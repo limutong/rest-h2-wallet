@@ -19,8 +19,6 @@ For instructions:
 
   1.3.Invoke Restful API from Insomnia
   
-  ![rest-01](https://user-images.githubusercontent.com/6138747/117593344-fb43ac80-b16d-11eb-8467-4d5dd0185d54.PNG)
-  
   ![rest-02](https://user-images.githubusercontent.com/6138747/117593881-7c4f7380-b16f-11eb-91bf-1fab829bc5bb.PNG)
   
   ![rest-03](https://user-images.githubusercontent.com/6138747/117593884-7ce80a00-b16f-11eb-8311-92520e5e4d31.PNG)
