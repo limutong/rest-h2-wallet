@@ -3,13 +3,22 @@ Spring Boot Rest H2 Sample
 
 For instructions:
 
-1.Launch the spring boot project
+1.Build the project :
+
+  ![build-01](https://user-images.githubusercontent.com/6138747/117593979-b882d400-b16f-11eb-9dd4-4c3d56587787.PNG)
+  
+  ![sprintboot-01](https://user-images.githubusercontent.com/6138747/117593977-b751a700-b16f-11eb-99c2-89c64678a726.PNG)
+  
+2.Launch the spring boot project
 
   1.1.Launch CoinWalletApplication.main from IntelliJ
   
   1.2.Download Insomnia, import Insomnia scripts rest-h2-wallet/restful/Restful_Demo_Insomnia_2021-05-09.json
   
+  ![import-01](https://user-images.githubusercontent.com/6138747/117594164-11eb0300-b170-11eb-92c1-6c9ba5e2be21.PNG)
+
   1.3.Invoke Restful API from Insomnia
+  
   ![rest-01](https://user-images.githubusercontent.com/6138747/117593344-fb43ac80-b16d-11eb-8467-4d5dd0185d54.PNG)
   
   ![rest-02](https://user-images.githubusercontent.com/6138747/117593881-7c4f7380-b16f-11eb-91bf-1fab829bc5bb.PNG)
@@ -29,6 +38,7 @@ For instructions:
   ![rest-09](https://user-images.githubusercontent.com/6138747/117593893-7f4a6400-b16f-11eb-9eb2-d8343eccf2ac.PNG)
   
   1.4 Access H2 DB and check backend result
+  
   ![h2-01](https://user-images.githubusercontent.com/6138747/117593909-8d988000-b16f-11eb-9cd4-b9908356534d.PNG)
   
   ![h2-02](https://user-images.githubusercontent.com/6138747/117593910-8e311680-b16f-11eb-9d96-87256297f7ed.PNG)
@@ -37,7 +47,7 @@ For instructions:
   
   ![h2-04](https://user-images.githubusercontent.com/6138747/117593913-8f624380-b16f-11eb-8481-74437fe0199c.PNG)
   
-2.Access H2 DB : 
+3.Access H2 DB : 
 
   2.1.application.properties -> spring.h2.console.enabled=true
 
@@ -47,8 +57,5 @@ For instructions:
 
   2.4.jdbc:h2:file:./data/planetdb -> connect
 
-3.To build the project :
 
-  ![sprintboot-01](https://user-images.githubusercontent.com/6138747/117593977-b751a700-b16f-11eb-99c2-89c64678a726.PNG)
 
-  ![build-01](https://user-images.githubusercontent.com/6138747/117593979-b882d400-b16f-11eb-9dd4-4c3d56587787.PNG)
