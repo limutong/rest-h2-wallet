@@ -7,11 +7,11 @@ For instructions:
 
   ![build-01](https://user-images.githubusercontent.com/6138747/117593979-b882d400-b16f-11eb-9dd4-4c3d56587787.PNG)
   
-  ![sprintboot-01](https://user-images.githubusercontent.com/6138747/117593977-b751a700-b16f-11eb-99c2-89c64678a726.PNG)
-  
 2.Launch the spring boot project
 
   1.1.Launch CoinWalletApplication.main from IntelliJ
+
+  ![sprintboot-01](https://user-images.githubusercontent.com/6138747/117593977-b751a700-b16f-11eb-99c2-89c64678a726.PNG)
   
   1.2.Download Insomnia, import Insomnia scripts rest-h2-wallet/restful/Restful_Demo_Insomnia_2021-05-09.json
   
@@ -36,8 +36,6 @@ For instructions:
   ![rest-09](https://user-images.githubusercontent.com/6138747/117593893-7f4a6400-b16f-11eb-9eb2-d8343eccf2ac.PNG)
   
   1.4 Access H2 DB and check backend result
-  
-  ![h2-01](https://user-images.githubusercontent.com/6138747/117593909-8d988000-b16f-11eb-9cd4-b9908356534d.PNG)
   
   ![h2-02](https://user-images.githubusercontent.com/6138747/117593910-8e311680-b16f-11eb-9d96-87256297f7ed.PNG)
   
