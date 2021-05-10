@@ -64,7 +64,7 @@ class WalletControllerTest {
     wallet1.setCoins("2, 3, 1, 2, 1");
 
     when(walletService.getAllWallets()).thenReturn(List.of(wallet1));
-    MockHttpServletResponse response = mockMvc.perform(get("/wallet")
+    MockHttpServletResponse response = mockMvc.perform(get("/wallet/v1")
             .accept(MediaType.APPLICATION_JSON))
             .andReturn().getResponse();
 
@@ -89,7 +89,7 @@ class WalletControllerTest {
     wallet1.setName("limutong");
     wallet1.setCoins("2, 3, 1, 2, 1");
     when(walletService.getWalletById(1L)).thenReturn(wallet1);
-    MockHttpServletResponse response = mockMvc.perform(get("/wallet/id/1")
+    MockHttpServletResponse response = mockMvc.perform(get("/wallet/v1/id/1")
             .accept(MediaType.APPLICATION_JSON))
             .andReturn().getResponse();
 
@@ -117,7 +117,7 @@ class WalletControllerTest {
               walletToSave.setId(1L);
               return walletToSave;
             });
-    MockHttpServletResponse response = mockMvc.perform(post("/wallet")
+    MockHttpServletResponse response = mockMvc.perform(post("/wallet/v1")
             .contentType(MediaType.APPLICATION_JSON)
             .content(getJsonFromObject(wallet1))
             .accept(MediaType.APPLICATION_JSON))
@@ -149,7 +149,7 @@ class WalletControllerTest {
               Wallet walletToSave = (Wallet) args[1];
               return walletToSave;
             });
-    MockHttpServletResponse response = mockMvc.perform(put("/wallet/1")
+    MockHttpServletResponse response = mockMvc.perform(put("/wallet/v1/1")
             .contentType(MediaType.APPLICATION_JSON)
             .content(getJsonFromObject(wallet1))
             .accept(MediaType.APPLICATION_JSON))
@@ -169,7 +169,7 @@ class WalletControllerTest {
   @Test
   @DisplayName("Delete wallet by id test")
   void deleteWalletByIdTest() throws Exception {
-    MockHttpServletResponse response = mockMvc.perform(delete("/wallet/1")
+    MockHttpServletResponse response = mockMvc.perform(delete("/wallet/v1/1")
             .accept(MediaType.APPLICATION_JSON))
             .andReturn().getResponse();
 
@@ -192,7 +192,7 @@ class WalletControllerTest {
     when(walletService.getWalletByNameLike("mut"))
             .thenReturn(List.of(wallet1));
     MockHttpServletResponse response
-            = mockMvc.perform(get("/wallet/search/mut")
+            = mockMvc.perform(get("/wallet/v1/search/mut")
             .accept(MediaType.APPLICATION_JSON))
             .andReturn().getResponse();
 

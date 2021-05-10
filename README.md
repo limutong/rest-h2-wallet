@@ -86,7 +86,7 @@
 
   2.3.http://localhost:8080/h2-console
 
-  2.4.jdbc:h2:file:./data/planetdb -> connect
+  2.4.jdbc:h2:file:./data/wallet -> connect
 
 
 

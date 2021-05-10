@@ -4,6 +4,8 @@ import com.mt.wallet.entity.PaymentDetails;
 import com.mt.wallet.entity.Wallet;
 import com.mt.wallet.service.WalletService;
 import com.mt.wallet.utils.WalletUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,9 +18,10 @@ import java.util.List;
  * Wallet Rest Controller.
  */
 @RestController
-@RequestMapping("/wallet")
+@RequestMapping("/wallet/v1")
 public class WalletController {
 
+    Logger logger = LoggerFactory.getLogger(WalletController.class);
     public static final String RESULT_SUCCESS = "Success";
     public static final String RESULT_FAILED = "Failed";
     /**
@@ -106,9 +109,9 @@ public class WalletController {
     @PostMapping("/pay")
     public ResponseEntity<List> pay(
             @RequestBody final PaymentDetails paymentDetails) {
-        System.out.println("===== recevied pay request =====");
+        logger.info("===== recevied pay request =====");
         List<String> result = new ArrayList();
-        String responseMsg = "Successfully paid "+ paymentDetails.getAmount();
+        String responseMsg = "Successfully paid " + paymentDetails.getAmount();
         try {
             Wallet wallet = walletService.pay(paymentDetails);
             result.add(responseMsg);

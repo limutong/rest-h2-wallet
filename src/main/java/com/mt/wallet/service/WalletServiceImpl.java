@@ -1,11 +1,14 @@
 package com.mt.wallet.service;
 
 import com.google.common.collect.Lists;
+import com.mt.wallet.controller.WalletController;
 import com.mt.wallet.entity.PaymentDetails;
 import com.mt.wallet.entity.Wallet;
 import com.mt.wallet.repository.WalletRepository;
 import com.mt.wallet.utils.WalletUtil;
 import org.apache.logging.log4j.util.Strings;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -20,6 +23,7 @@ import java.util.stream.Collectors;
 @Service
 public class WalletServiceImpl implements WalletService {
 
+    Logger logger = LoggerFactory.getLogger(WalletServiceImpl.class);
     /**
      * Autowiring the Wallet Repository.
      */
@@ -108,21 +112,21 @@ public class WalletServiceImpl implements WalletService {
 
     @Override
     public Wallet pay(PaymentDetails paymentDetails) throws Exception {
-        System.out.println("-----");
-        System.out.println("paymentDetails : " + paymentDetails.toString());
+        logger.info("-----");
+        logger.info("paymentDetails : " + paymentDetails.toString());
         // Fetch the Wallets from db
         List<Wallet> walletsFromDb = walletRepository.findByName(paymentDetails.getName());
         Integer payAmount = paymentDetails.getAmount();
         if (CollectionUtils.isEmpty(walletsFromDb) || walletsFromDb.size() > 1) {
             String errorMsg = "Invalid user name : [" + paymentDetails.getName() + "], walletsFromDb : [" + walletsFromDb.toString() + "]";
-            System.out.println("----" + errorMsg);
+            logger.info("----" + errorMsg);
             throw new InvalidParameterException(errorMsg);
         }
         Wallet walletFromDb = walletsFromDb.get(0);
         String newCoins = payWithDefaultStratergy(walletFromDb.getCoins(), payAmount);
         walletFromDb.setCoins(newCoins);
 
-        System.out.println(" ---- store wallet complete ----");
+        logger.info(" ---- store wallet complete ----");
         return walletRepository.save(walletFromDb);
     }
 
@@ -139,8 +143,8 @@ public class WalletServiceImpl implements WalletService {
 
         List<Integer> coinList = Arrays.stream(coins.split(",")).map(str -> Integer.valueOf(str.trim())).collect(Collectors.toList());
         Collections.sort(coinList);
-        System.out.println("---- default Stratergy ----");
-        System.out.println("coinList :" + coinList.toString());
+        logger.info("---- default Stratergy ----");
+        logger.info("coinList :" + coinList.toString());
         List<Integer> withdrawCoins = Lists.newArrayList();
         Integer withdrawAmount = 0;
         for (Integer coin : coinList) {
@@ -151,28 +155,28 @@ public class WalletServiceImpl implements WalletService {
             withdrawAmount += coin;
         }
         if (withdrawAmount == payAmount) {
-            System.out.println("---- payAmount [" + payAmount + "], No Change required, paid [" + withdrawCoins.toString() + "] ----");
+            logger.info("---- payAmount [" + payAmount + "], No Change required, paid [" + withdrawCoins.toString() + "] ----");
         }
         if (withdrawAmount > payAmount) {
             Integer change = withdrawAmount - payAmount;
-            System.out.println(" ---- payAmount [" + payAmount + "], Change required [" + change + "], paid [" + withdrawCoins.toString() + "] ----");
+            logger.info(" ---- payAmount [" + payAmount + "], Change required [" + change + "], paid [" + withdrawCoins.toString() + "] ----");
             coinList.add(change);
-            System.out.println(" ---- coinList with change : [" + coinList.toString() + "]");
+            logger.info(" ---- coinList with change : [" + coinList.toString() + "]");
         }
         if (withdrawAmount < payAmount) {
-            System.out.println(" ---- InsufficientBalanceException ---- ");
+            logger.info(" ---- InsufficientBalanceException ---- ");
             String errorMsg = "You do not have sufficient coins to pay " + payAmount + "." + "\\r\\n" +
                     " My current coins are [" + coins + "]";
             throw new InsufficientBalanceException(errorMsg);
         }
 
-        System.out.println(" ---- withdrawCoins  : " + withdrawCoins.toString() + " ----");
-        System.out.println(" ---- coinList before remove garthered coin : " + coinList.toString() + " ----");
+        logger.info(" ---- withdrawCoins  : " + withdrawCoins.toString() + " ----");
+        logger.info(" ---- coinList before remove garthered coin : " + coinList.toString() + " ----");
         withdrawCoins.forEach(gc -> {
             coinList.remove(gc);
         });
         Collections.sort(coinList);
-        System.out.println(" ---- coinList after remove garthered coin : " + coinList.toString() + " ----");
+        logger.info(" ---- coinList after remove garthered coin : " + coinList.toString() + " ----");
         return coinList.toString().replace("[", "").replace("]", "");
     }
 
