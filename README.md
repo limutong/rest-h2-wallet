@@ -10,7 +10,7 @@ For instructions:
   1.2.Download Insomnia, import Insomnia scripts rest-h2-wallet/restful/Restful_Demo_Insomnia_2021-05-09.json
   
   1.3.Invoke Restful API from Insomnia
-  
+  ![rest-01](https://user-images.githubusercontent.com/6138747/117593344-fb43ac80-b16d-11eb-8467-4d5dd0185d54.PNG)
   1.4 Access H2 DB and check backend result
 
 2.Access H2 DB : 
