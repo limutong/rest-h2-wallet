@@ -1,7 +1,42 @@
 # spring-boot-rest-h2-wallet
-Spring Boot Rest H2 Sample
 
-For instructions:
+**Spring Boot Rest H2 Sample**
+
+**Functions completed**:
+
+    1.Functionalities includes: initialWallet, queryBalance, pay
+
+    2.Restful API and test json scripts
+
+    3.H2
+
+    4.Basic test cases
+
+
+**Todo enhancements:**
+
+    1.Create more test cases, both unit and api test, lift up code coverage to 90%
+
+    2.Refactor api path and resources, add version into path
+
+    3.Wrap all "write" function flows into transactions
+
+    4.Enhance controller layer:
+
+      4.1.Error handler with error code & reason mapping
+
+      4.2.Create context for isolate concurrent request
+
+      4.3.Add more readable description for queryWallet api, improve response body, with common result 
+
+    5.Add proxy class by Composition into walletService layer, with this stratergy pattern, we can apply different pay stratergies, for instance, fast scan for the exact matching coin before default stratergy; support customized payment with user priority input; support feature payment like discount/coupon
+
+    6.Replace sout to logger, split digest and service log hierarchy
+
+
+
+
+**For instructions:**
 
 1.Build the project :
 
