@@ -4,22 +4,26 @@
 
 **Functions completed**:
 
-    1.Functionalities includes: initialWallet, queryBalance, pay
+    1.Functionalities includes: initialWallet, queryWallet, pay
 
-    2.Restful API and test json scripts
+    2.Restful API and Insomnia test json scripts
 
     3.H2
 
     4.Basic test cases
 
+    5.slf4j logger
 
-**Todo enhancements:**
+    6.Define api version as "v1"
+
+
+**Future enhancements:**
 
     1.Create more test cases, both unit and api test, lift up code coverage to 90%
 
-    2.Refactor api path and resources, add version into path
+    2.Refactor api path and resources with more readable name
 
-    3.Wrap all "write" function flows into transactions
+    3.Wrap all "write" function flows into transactions, add cache layer for "read" functions
 
     4.Enhance controller layer:
 
@@ -31,7 +35,7 @@
 
     5.Add proxy class by Composition into walletService layer, with this stratergy pattern, we can apply different pay stratergies, for instance, fast scan for the exact matching coin before default stratergy; support customized payment with user priority input; support feature payment like discount/coupon
 
-    6.Replace sout to logger, split digest and service log hierarchy
+    6.Split digest and service log hierarchy
 
 
 
@@ -48,7 +52,7 @@
 
   ![sprintboot-01](https://user-images.githubusercontent.com/6138747/117593977-b751a700-b16f-11eb-99c2-89c64678a726.PNG)
   
-  1.2.Download Insomnia, import Insomnia scripts rest-h2-wallet/restful/Restful_Demo_Insomnia_2021-05-09.json
+  1.2.Download Insomnia, import Insomnia scripts rest-h2-wallet/restful/Restful_Demo_Insomnia_2021-05-11.json
   
   ![import-01](https://user-images.githubusercontent.com/6138747/117594164-11eb0300-b170-11eb-92c1-6c9ba5e2be21.PNG)
 
